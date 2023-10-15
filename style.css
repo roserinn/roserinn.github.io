@@ -699,6 +699,10 @@ font-family: 'Manrope', sans-serif; */
   margin-bottom: 60px;
 }
 
+.item__list {
+  margin-bottom: 50px;
+}
+
 .item__list li {
   color: hsl(0, 0%, 76%);
   line-height: 25px;
@@ -726,7 +730,17 @@ font-family: 'Manrope', sans-serif; */
   margin-bottom: 20px;
 }
 
-
+@media (max-width: 768px) {
+  .list__title {
+    font-size: 2rem;
+  }
+  
+  
+.item__list li {
+  margin-bottom: 10px;
+  font-size: 1.2rem;
+}
+}
 
 /* ---------------------- footer ----------------------------*/
 
