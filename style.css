@@ -515,7 +515,7 @@ font-family: 'Manrope', sans-serif; */
   color: hsl(0, 0%, 92%);
   font-size: 1.3rem;
   line-height: 187.5%;
-  margin: 50px 0px;
+  margin: 40px 0px 60px;
 }
 
 .icon__request__button {
@@ -525,15 +525,12 @@ font-family: 'Manrope', sans-serif; */
   line-height: 153.846%;
   text-transform: capitalize;
   border-radius: 200px;
-  background: hsl(275, 100%, 50%);
+  background: #9500ff;
   font-family: 'IBM Plex Mono', monospace;
   padding: 10px 20px;
   letter-spacing: .1rem;
-  transition: all .3s ease;
-}
-
-.icon__request__button:hover {
-  background: hsl(245, 100%, 62%);
+  opacity: 0;
+  will-change: transform;
 }
 
 @media (max-width: 1200px) {
