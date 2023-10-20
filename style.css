@@ -303,7 +303,7 @@ font-family: 'Manrope', sans-serif; */
 .unique__icons__title {
   margin-top: 150px;
   letter-spacing: .1rem;
-  font-size: 3.5rem;
+  font-size: 3rem;
   line-height: 129.167%;
 }
 
@@ -341,24 +341,23 @@ font-family: 'Manrope', sans-serif; */
   margin-bottom: 100px;
 }
 
-.buy__button:hover {
-  background: hsl(245, 100%, 62%);
-}
-
 .unique__icons__img {
-  position: relative;
-  z-index: 2;
+  width: 350px;
+  overflow: hidden;
 }
 
-.unique__phone__wrapper {
+.screen {
+  width: 350px;
   position: relative;
+  z-index: 3;
 }
 
-.unique__icons__img img {
-  width: 450px;
-  height: 800px;
-  filter: drop-shadow(0px 0px 100px hsl(288, 100%, 60%));
-  animation: neonShadowAnimation 2s linear infinite alternate-reverse;
+.slider {
+  position: absolute;
+  right: -430px;
+  top: 82px;
+  z-index: 1;
+  opacity: 0;
 }
 
 @keyframes neonShadowAnimation {
@@ -443,11 +442,12 @@ font-family: 'Manrope', sans-serif; */
 }
 
 .img-fluid {
-  width: 100%;
+  height: 100px;
+  width: 100px;
 }
 
 .rendered__icons__scroll__container {
-  height: calc(50vw + 70px);
+  height: calc(30vw + 50px);
   overflow-y: scroll;
   padding-right: 17px;
   box-shadow: inset 0px 0px 200px 0px hsl(0, 0%, 0%);
@@ -481,7 +481,40 @@ font-family: 'Manrope', sans-serif; */
   background-color: hsl(0, 0%, 0%);
 }
 
-
+@media (max-width: 1400px) {
+  .rendered__icons__scroll__container {
+    height: calc(35vw + 50px);
+  }
+}
+@media (max-width: 1250px) {
+  .rendered__icons__scroll__container {
+    height: calc(40vw + 50px);
+  }
+}
+@media (max-width: 1140px) {
+  .rendered__icons__scroll__container {
+    height: calc(45vw + 50px);
+  }
+}
+@media (max-width: 1000px) {
+  .rendered__icons__scroll__container {
+    height: calc(60vw + 50px);
+  }
+}
+@media (max-width: 768px) {
+  .rendered__icons__scroll__container {
+    height: calc(40vw + 50px);
+  }
+  .img-fluid {
+height: 90%;
+width: 90%;
+  }
+}
+@media (max-width: 500px) {
+  .rendered__icons__scroll__container {
+    height: calc(60vw + 50px);
+  }
+}
 
 /* --------------------------------------- icon request ------------------------------- */
 
@@ -581,10 +614,16 @@ font-family: 'Manrope', sans-serif; */
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
-  padding: 100px;
+  height: 60vh;
+}
+
+.paralax {
+  position: relative;
 }
 
 .grab__the__pack__info__block {
+  top: 50%;
+  position: absolute;
   text-align: center;
 }
 
@@ -593,12 +632,15 @@ font-family: 'Manrope', sans-serif; */
   letter-spacing: .1rem;
   font-size: 3rem;
   line-height: 101.961%;
+  padding-bottom: 60px;
+  opacity: 0;
 }
 
 .grab__the__pack__text {
   font-size: 1rem;
   text-shadow: 0px 0px 5px black;
   margin: 40px 0px;
+  opacity: 0;
 }
 
 .grab__the__pack__button {
@@ -614,6 +656,8 @@ font-family: 'Manrope', sans-serif; */
   padding: 10px 20px;
   letter-spacing: .1rem;
   transition: all .3s ease;
+  margin-top: 50px;
+  opacity: 0;
 }
 
 .grab__the__pack__button:hover {
@@ -630,7 +674,7 @@ font-family: 'Manrope', sans-serif; */
     font-size: .8rem;
     margin: 20px 0px;
   }
-  
+
   .grab__the__pack__button {
     width: 60%;
     font-size: .8rem;
@@ -703,11 +747,11 @@ font-family: 'Manrope', sans-serif; */
   .list__title {
     font-size: 2rem;
   }
-  
-  
-.item__list li {
-  font-size: 1.1rem;
-}
+
+
+  .item__list li {
+    font-size: 1.1rem;
+  }
 }
 
 /* ---------------------- footer ----------------------------*/
