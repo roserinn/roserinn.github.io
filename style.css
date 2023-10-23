@@ -105,8 +105,6 @@ h6 {
 
 @import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@300;400&family=Manrope&display=swap');
 
-/* font-family: 'IBM Plex Mono', monospace;
-font-family: 'Manrope', sans-serif; */
 
 /* ------------------------------- header ----------------------------------- */
 
@@ -301,15 +299,18 @@ font-family: 'Manrope', sans-serif; */
 }
 
 .unique__icons__title {
-padding-top: 100px;
+  padding-top: 100px;
   letter-spacing: .1rem;
   font-size: 3rem;
   line-height: 129.167%;
   opacity: 0;
 }
 
-.unique__icons__list {
+.uniquelist {
   margin: 100px 0px;
+}
+
+.unique__icons__list {
   padding-left: 0px;
   font-size: 1.1rem;
   line-height: 187.5%;
@@ -360,24 +361,14 @@ padding-top: 100px;
 
 .slider {
   position: absolute;
-  right: -430px;
+  left: 0;
   top: 82px;
   z-index: 1;
   opacity: 0;
 }
 
-@keyframes neonShadowAnimation {
-  to {
-    filter: drop-shadow(5px 5px 100px hsl(245, 100%, 66%));
-  }
-}
 
 @media (max-width: 1200px) {
-  .unique__icons__img img {
-    width: 400px;
-    height: 700px;
-    margin-bottom: 200px;
-  }
 
   .unique__icons__list {
     margin: 50px 0px;
@@ -389,12 +380,6 @@ padding-top: 100px;
   .unique__icons__title {
     font-size: 3rem;
   }
-
-  .unique__icons__img {
-    width: 200px;
-    overflow: hidden;
-  }
-  
 }
 
 @media (max-width: 990px) {
@@ -409,23 +394,12 @@ padding-top: 100px;
     margin-top: 20px;
     font-size: 2.5rem;
   }
-
-  .unique__icons__img img {
-    width: 380px;
-    height: 680px;
-  }
-
 }
 
 @media (max-width: 768px) {
 
   .unique__icons__title {
     font-size: 2.5rem;
-  }
-
-  .unique__icons__img img {
-    width: 350px;
-    height: 570px;
   }
 }
 
@@ -450,24 +424,27 @@ padding-top: 100px;
   font-size: 2.2rem;
   line-height: 137.931%;
   text-transform: capitalize;
-  margin-bottom: 80px;
+  margin-bottom: 40px;
+  position: absolute;
+  top: 10%;
+  text-shadow: 3px 3px 8px #000000;
+  opacity: 0;
 }
 
-.img-fluid {
-  height: 100px;
-  width: 100px;
-}
-
-.rendered__icons__scroll__container {
-  height: calc(30vw + 50px);
-  overflow-y: scroll;
-  padding-right: 17px;
-  box-shadow: inset 0px 0px 200px 0px hsl(0, 0%, 0%);
+.rendered__icons__subtitle {
+  letter-spacing: .2rem;
+  font-size: 1rem;
+  color: hsl(0, 0%, 100%);
+  text-align: center;
+  text-shadow: 3px 3px 8px #000000;
+  position: absolute;
+  top: 20%;
+  opacity: 0;
 }
 
 .box__shadow {
   position: relative;
-  width: 1320px;
+  width: 1570px;
   height: 200px;
 }
 
@@ -481,56 +458,10 @@ padding-top: 100px;
   background: linear-gradient(180deg, hsla(278, 100%, 50%, 0) 0%, hsla(0, 0%, 0%, 0.664) 41%, hsl(0, 0%, 0%) 79%);
 }
 
-.rendered__icons__scroll__container::-webkit-scrollbar {
-  width: 0px;
-}
-
-.rendered__icons__scroll__container::-webkit-scrollbar-thumb {
-  background-color: hsl(0, 0%, 0%);
-}
-
-.rendered__icons__scroll__container::-webkit-scrollbar-track {
-  background-color: hsl(0, 0%, 0%);
-}
-
-@media (max-width: 1400px) {
-  .rendered__icons__scroll__container {
-    height: calc(35vw + 50px);
-  }
-}
-@media (max-width: 1250px) {
-  .rendered__icons__scroll__container {
-    height: calc(40vw + 50px);
-  }
-}
-@media (max-width: 1140px) {
-  .rendered__icons__scroll__container {
-    height: calc(45vw + 50px);
-  }
-}
-@media (max-width: 1000px) {
-  .rendered__icons__scroll__container {
-    height: calc(60vw + 50px);
-  }
-}
-@media (max-width: 768px) {
-  .rendered__icons__scroll__container {
-    height: calc(40vw + 50px);
-  }
-  .img-fluid {
-height: 90%;
-width: 90%;
-  }
-}
-@media (max-width: 500px) {
-  .rendered__icons__scroll__container {
-    height: calc(60vw + 50px);
-  }
-}
-
 
 
 /* --------------------------------------- icon request ------------------------------- */
+
 
 
 .icon__request {
@@ -696,9 +627,7 @@ width: 90%;
 }
 
 
-
 /* ------------------------------- big sur ready ------------------------- */
-
 
 
 .big__sur__ready {
@@ -768,6 +697,8 @@ width: 90%;
   }
 }
 
+
+
 /* ---------------------- footer ----------------------------*/
 
 
@@ -787,11 +718,16 @@ width: 90%;
   text-align: center;
 }
 
-.authors span {
+.authors a {
   color: hsl(275, 100%, 50%);
   text-align: center;
+  transition: all .3s ease;
 }
 
+.authors a:hover {
+  color: hsl(0, 0%, 100%);
+  text-shadow: 0 0 10px hsla(0, 0%, 100%, 0.823), 0 0 30px hsl(280, 100%, 50%), 0 0 40px hsl(282, 100%, 50%), 0 0 50px hsl(275, 100%, 50%);
+}
 
 small {
   margin-top: 40px;

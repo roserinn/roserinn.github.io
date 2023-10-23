@@ -47,7 +47,9 @@ gsap.from('.advantages__card', {
 });
 
 
+
 // --------------------------- unique icons phone animation ----------------------------
+
 
 const phone = document.querySelector('.unique__icons__img')
 const phoneSliderImg = document.querySelector('.slider');
@@ -57,16 +59,14 @@ const uniqueList = document.querySelector('.unique__icons__list');
 const uniqueBtn = document.querySelector('.buy__button');
 
 let list = uniqueList.querySelectorAll('li')
-
 gsap.registerPlugin(ScrollTrigger);
 
 
 const scrollTriggerTimeline = gsap.timeline({
   scrollTrigger: {
-    trigger: ".unique__icons__info__block", 
-    start: "top 30%", 
-    end: "bottom bottom", 
-    markers: true,
+    trigger: ".unique__icons__info__block",
+    start: "top 30%",
+    end: "bottom bottom",
   }
 });
 
@@ -75,7 +75,6 @@ scrollTriggerTimeline.to(uniqueTitle, {
   ease: 'back',
   opacity: 1,
   duration: 1
-
 })
 
 scrollTriggerTimeline.from(list, {
@@ -95,6 +94,7 @@ scrollTriggerTimeline.to(uniqueBtn, {
   delay: 0.3
 });
 
+//phone animation
 const phoneAnim = scrollTriggerTimeline.from(phone, {
   y: 800,
   duration: 4,
@@ -135,19 +135,108 @@ screen.addEventListener('mouseleave', () => {
 
 // --------------------------- rendered icons animation ----------------------------
 
+//icons falling animation
+const canvas = document.getElementById("iconCanvas");
+const ctx = canvas.getContext("2d");
+
+const icons = [
+  "./img/images of icons/icon1.png",
+  "./img/images of icons/icon2.png",
+  "./img/images of icons/icon3.png",
+  "./img/images of icons/icon4.png",
+  "./img/images of icons/icon3.png",
+  "./img/images of icons/icon6.png",
+  "./img/images of icons/icon7.png",
+  "./img/images of icons/icon8.png",
+  "./img/images of icons/icon9.png",
+  "./img/images of icons/icon9.png",
+  "./img/images of icons/icon10.png",
+  "./img/images of icons/icon11.png",
+  "./img/images of icons/icon3.png",
+  "./img/images of icons/icon12.png",
+  "./img/images of icons/icon13.png",
+  "./img/images of icons/icon14.png",
+  "./img/images of icons/icon15.png",
+  "./img/images of icons/icon16.png",
+  "./img/images of icons/icon15.png",
+];
+
+const iconObjects = [];
+
+for (let i = 0; i < icons.length; i++) {
+  iconObjects.push({
+    img: new Image(),
+    x: Math.random() * canvas.width,
+    y: -150,
+    speed: Math.random() * 3 + 1
+  });
+  iconObjects[i].img.src = icons[i];
+}
+
+function drawIcons() {
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
+  for (let i = 0; i < iconObjects.length; i++) {
+    ctx.drawImage(iconObjects[i].img, iconObjects[i].x, iconObjects[i].y, 100, 100);
+  }
+}
+
+function updateIcons() {
+  for (let i = 0; i < iconObjects.length; i++) {
+    iconObjects[i].y += iconObjects[i].speed;
+
+    if (iconObjects[i].y > canvas.height) {
+      iconObjects[i].y = -150;
+      iconObjects[i].x = Math.random() * canvas.width;
+    }
+  }
+}
+
+function animate() {
+  drawIcons();
+  updateIcons();
+  requestAnimationFrame(animate);
+}
+animate();
 
 
+//title & subtitle animations 
+const renderedIconsTitle = document.querySelector('.rendered__icons__title ');
+const renderedIconsSubtitle = document.querySelector('.rendered__icons__subtitle');
 
-//some code
+const renderedIconsTitleAnim = gsap.to(renderedIconsTitle, {
+  opacity: 1,
+  duration: 2,
+  y: 250,
+  ease: 'back',
+  paused: true
+})
 
+const renderedIconsSubtitleAnim = gsap.to(renderedIconsSubtitle, {
+  opacity: 1,
+  duration: 2.1,
+  y: 250,
+  ease: 'back',
+  delay: .3,
+  paused: true
+})
 
-
-
-
-
+ScrollTrigger.create({
+  trigger: ".rendered__icons",
+  start: 'top 60%',
+  end: 'bottom 80%',
+  onEnter: () => {
+    renderedIconsTitleAnim.play();
+    renderedIconsSubtitleAnim.play()
+  },
+  onLeaveBack: () => {
+    renderedIconsTitleAnim.reverse();
+    renderedIconsSubtitleAnim.reverse();
+  },
+});
 
 
 // ------------------------------ Icon Request -----------------------------
+
 
 const iconRequestImg = document.querySelector(".icon__request__img");
 const iconRequestTitle = document.querySelector(".icon__request__title")
@@ -157,37 +246,37 @@ const iconRequestButton = document.querySelector(".icon__request__button")
 
 const imgIconRequestAnimation = gsap.from(iconRequestImg, {
   duration: 2.5,
-   x: -400,
-   ease: "back(3)", 
-   opacity: 0, 
-   delay: .1,
-   paused: true
+  x: -400,
+  ease: "back(3)",
+  opacity: 0,
+  delay: .1,
+  paused: true
 });
 
 const iconRequestTitleAnimation = gsap.from(iconRequestTitle, {
   duration: 1,
-   x: 200,
-   ease: "power", 
-   opacity: 0, 
-   delay: 1,
-   paused: true
+  x: 200,
+  ease: "power",
+  opacity: 0,
+  delay: 1,
+  paused: true
 });
 
-const iconRequestTextAnimation = gsap.from(iconRequestText , {
+const iconRequestTextAnimation = gsap.from(iconRequestText, {
   duration: 1,
-   x: 200,
-   ease: "power", 
-   opacity: 0, 
-   delay: 1.5,
-   paused: true 
+  x: 200,
+  ease: "power",
+  opacity: 0,
+  delay: 1.5,
+  paused: true
 });
 
-const iconRequestButtonAnimation =  gsap.to(iconRequestButton, {
-   y: -10, 
-   ease: "back", 
-   opacity: 1, 
-   delay: 2,
-   paused: true
+const iconRequestButtonAnimation = gsap.to(iconRequestButton, {
+  y: -10,
+  ease: "back",
+  opacity: 1,
+  delay: 2,
+  paused: true
 });
 
 ScrollTrigger.create({
@@ -201,7 +290,7 @@ ScrollTrigger.create({
     iconRequestButtonAnimation.play();
   },
 
-  onLeaveBack: ()=> {
+  onLeaveBack: () => {
     imgIconRequestAnimation.reverse();
     iconRequestTitleAnimation.reverse();
     iconRequestTextAnimation.reverse();
@@ -239,19 +328,18 @@ const button = gsap.to(btn, {
   y: 28,
   ease: 'back(4)',
   paused: true
-},"1.1")
+}, "1.1")
 
 ScrollTrigger.create({
   trigger: ".grab__the__pack",
-  markers: true,
   start: 'top 50%',
-  end: 'bottom 80%', 
+  end: 'bottom 80%',
   onEnter: () => {
     title.play()
     block.play()
     button.play()
   },
-  onLeaveBack: ()=> {
+  onLeaveBack: () => {
     title.reverse()
     block.reverse()
     button.reverse()
@@ -259,7 +347,9 @@ ScrollTrigger.create({
 });
 
 
+
 /* ------------------------------- big sur ready section anim ------------------------- */
+
 
 
 const bigSurTitle = document.querySelector('.big__sur__ready__title');
@@ -275,7 +365,7 @@ const bigSurTitleAnim = gsap.to(bigSurTitle, {
 })
 
 const bigSurBlockAnim = gsap.to(bigSurBlock, {
-  duration: 1, 
+  duration: 1,
   delay: .8,
   opacity: 1,
   paused: true
@@ -283,15 +373,16 @@ const bigSurBlockAnim = gsap.to(bigSurBlock, {
 
 ScrollTrigger.create({
   trigger: ".big__sur__ready",
-  markers: true,
   start: 'top 60%',
-  end: 'bottom 80%', 
+  end: 'bottom 80%',
   onEnter: () => {
     bigSurTitleAnim.play();
     bigSurBlockAnim.play()
   },
-  onLeaveBack: ()=> {
+  onLeaveBack: () => {
     bigSurTitleAnim.reverse();
     bigSurBlockAnim.reverse();
   },
 });
+
+
