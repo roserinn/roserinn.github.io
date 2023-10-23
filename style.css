@@ -301,15 +301,16 @@ font-family: 'Manrope', sans-serif; */
 }
 
 .unique__icons__title {
-  margin-top: 150px;
+padding-top: 100px;
   letter-spacing: .1rem;
   font-size: 3rem;
   line-height: 129.167%;
+  opacity: 0;
 }
 
 .unique__icons__list {
-  margin: 50px 0px;
-  padding-left: 10px;
+  margin: 100px 0px;
+  padding-left: 0px;
   font-size: 1.1rem;
   line-height: 187.5%;
 }
@@ -339,6 +340,11 @@ font-family: 'Manrope', sans-serif; */
   letter-spacing: .1rem;
   transition: all .3s ease;
   margin-bottom: 100px;
+  opacity: 0;
+}
+
+.buy__button:hover {
+  background: hsl(245, 100%, 62%);
 }
 
 .unique__icons__img {
@@ -383,6 +389,12 @@ font-family: 'Manrope', sans-serif; */
   .unique__icons__title {
     font-size: 3rem;
   }
+
+  .unique__icons__img {
+    width: 200px;
+    overflow: hidden;
+  }
+  
 }
 
 @media (max-width: 990px) {
@@ -428,8 +440,8 @@ font-family: 'Manrope', sans-serif; */
   background-color: hsl(0, 0%, 0%);
   position: relative;
   overflow: hidden;
+  overflow-x: hidden;
 }
-
 
 .rendered__icons__title {
   color: hsl(0, 0%, 100%);
@@ -516,6 +528,8 @@ width: 90%;
   }
 }
 
+
+
 /* --------------------------------------- icon request ------------------------------- */
 
 
@@ -523,11 +537,11 @@ width: 90%;
   color: hsl(0, 0%, 100%);
   background-color: hsl(0, 0%, 0%);
   padding-bottom: 150px;
+  overflow-x: hidden;
 }
 
 .icon__request__info__container {
   padding: calc(3% + 20px);
-  /* padding: 100px 50px 100px; */
 }
 
 .icon__request__title {
@@ -563,7 +577,11 @@ width: 90%;
   padding: 10px 20px;
   letter-spacing: .1rem;
   opacity: 0;
-  will-change: transform;
+  transition: all .3s ease;
+}
+
+.icon__request__button:hover {
+  background: hsl(245, 100%, 62%);
 }
 
 @media (max-width: 1200px) {
@@ -606,24 +624,19 @@ width: 90%;
 /* ---------------------------------------- grab the pack ----------------------------- */
 
 
-
 .grab__the__pack {
   background-color: hsl(0, 0%, 0%);
   color: hsl(0, 0%, 100%);
   background-image: url(/img/grab__the__pack__bg.png);
   background-repeat: no-repeat;
   background-position: center;
+  background-attachment: fixed;
   background-size: cover;
   height: 60vh;
 }
 
-.paralax {
-  position: relative;
-}
-
 .grab__the__pack__info__block {
   top: 50%;
-  position: absolute;
   text-align: center;
 }
 
@@ -696,6 +709,7 @@ width: 90%;
 }
 
 .big__sur__ready__info__block {
+  opacity: 0;
   padding: 50px;
 }
 
@@ -709,7 +723,8 @@ width: 90%;
   line-height: 2.5rem;
   letter-spacing: .1rem;
   text-transform: capitalize;
-  margin-bottom: 60px;
+  margin-bottom: 100px;
+  opacity: 0;
 }
 
 .item__list {
@@ -747,7 +762,6 @@ width: 90%;
   .list__title {
     font-size: 2rem;
   }
-
 
   .item__list li {
     font-size: 1.1rem;

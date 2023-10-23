@@ -1,6 +1,5 @@
 // ------------------- burger -----------------------
 
-
 const burgerIcon = document.querySelector('.burger-icon');
 const sideMenu = document.querySelector('.side-menu');
 console.log(burgerIcon)
@@ -10,9 +9,10 @@ burgerIcon.addEventListener('click', () => {
   burgerIcon.classList.add('burger-menu__open');
 });
 
-// --------------------------- sections Anim ------------------------------
 
-// first section
+
+//--------------------------- first section animation -----------------------------
+
 
 gsap.from('.anim', {
   duration: 1, y: -100, ease: "expoScale(0.5,7,none)", opacity: 0
@@ -24,9 +24,10 @@ gsap.from('.info__block', {
 
 
 
-// advantages section
+// ------------------------- advantages section animation --------------------------
 
-gsap.registerPlugin(ScrollToPlugin, TextPlugin);
+
+gsap.registerPlugin(ScrollToPlugin);
 
 gsap.from('.advantages__card', {
   duration: .9,
@@ -39,12 +40,112 @@ gsap.from('.advantages__card', {
   },
 
   scrollTrigger: {
-    markers: true,
     trigger: ".advantages",
     start: "top center",
     end: "bottom center",
   },
 });
+
+
+// --------------------------- unique icons phone animation ----------------------------
+
+const phone = document.querySelector('.unique__icons__img')
+const phoneSliderImg = document.querySelector('.slider');
+const screen = document.querySelector('.screen');
+const uniqueTitle = document.querySelector('.unique__icons__title');
+const uniqueList = document.querySelector('.unique__icons__list');
+const uniqueBtn = document.querySelector('.buy__button');
+
+let list = uniqueList.querySelectorAll('li')
+
+gsap.registerPlugin(ScrollTrigger);
+
+
+const scrollTriggerTimeline = gsap.timeline({
+  scrollTrigger: {
+    trigger: ".unique__icons__info__block", 
+    start: "top 30%", 
+    end: "bottom bottom", 
+    markers: true,
+  }
+});
+
+scrollTriggerTimeline.to(uniqueTitle, {
+  y: 50,
+  ease: 'back',
+  opacity: 1,
+  duration: 1
+
+})
+
+scrollTriggerTimeline.from(list, {
+  x: -40,
+  opacity: 0,
+  stagger: {
+    each: 0.4,
+    from: "start",
+  }
+})
+
+scrollTriggerTimeline.to(uniqueBtn, {
+  y: -50,
+  ease: 'back',
+  opacity: 1,
+  duration: 1,
+  delay: 0.3
+});
+
+const phoneAnim = scrollTriggerTimeline.from(phone, {
+  y: 800,
+  duration: 4,
+  ease: 'back',
+});
+
+const phoneMovement = scrollTriggerTimeline.to('.unique__icons__img', {
+  y: 30,
+  duration: 5,
+  ease: 'back',
+  yoyo: true,
+  repeat: -1,
+});
+
+const mainScreenAnim = scrollTriggerTimeline.to(phoneSliderImg, {
+  duration: 3,
+  ease: 'linear',
+  delay: 3,
+  opacity: 1,
+}, "2");
+
+const sliderAnim = gsap.to(phoneSliderImg, {
+  x: -440,
+  duration: 1,
+  ease: "power(2).in",
+  delay: 0.5,
+  paused: true
+});
+
+screen.addEventListener('mouseenter', () => {
+  sliderAnim.play()
+});
+
+screen.addEventListener('mouseleave', () => {
+  sliderAnim.reverse()
+});
+
+
+// --------------------------- rendered icons animation ----------------------------
+
+
+
+
+//some code
+
+
+
+
+
+
+
 
 // ------------------------------ Icon Request -----------------------------
 
@@ -89,23 +190,6 @@ const iconRequestButtonAnimation =  gsap.to(iconRequestButton, {
    paused: true
 });
 
-// iconRequestButton.addEventListener("mouseenter", function(){
-//   gsap.to(iconRequestButton, {
-//     duration: 2,
-//     background: 'linear-gradient(90deg, rgba(36,29,253,1) 0%, rgba(173,0,168,1) 100%)',
-//     ease: 'back(4)',
-//   });
-// });
-
-// iconRequestButton.addEventListener("mouseleave", function() {
-//   gsap.to(iconRequestButton, {
-//     duration: 1,
-//     background: "#9500ff",
-//     ease: 'power1.inOut',
-//   });
-// });
-
-
 ScrollTrigger.create({
   trigger: ".icon__request",
   start: "top 60%",
@@ -126,16 +210,12 @@ ScrollTrigger.create({
 });
 
 
-
 // ---------------------------- grap the pack section animation ----------------------
+
 
 const titleText = document.querySelector('.grab__the__pack__title')
 const blockText = document.querySelector('.grab__the__pack__text')
 const btn = document.querySelector('.grab__the__pack__button')
-
-// tl is timeline
-const tl = gsap.timeline();
-
 
 const title = gsap.to(titleText, {
   opacity: 1,
@@ -165,8 +245,7 @@ ScrollTrigger.create({
   trigger: ".grab__the__pack",
   markers: true,
   start: 'top 50%',
-  end: 'bottom 80%',
-  scrub: true, 
+  end: 'bottom 80%', 
   onEnter: () => {
     title.play()
     block.play()
@@ -179,70 +258,40 @@ ScrollTrigger.create({
   },
 });
 
-// paralax 
+
+/* ------------------------------- big sur ready section anim ------------------------- */
 
 
+const bigSurTitle = document.querySelector('.big__sur__ready__title');
+const bigSurBlock = document.querySelector('.big__sur__ready__info__block');
 
-
-// --------------------------- unique icons phone animation ----------------------------
-
-const phone = document.querySelector('.unique__icons__img')
-const phoneSliderImg = document.querySelector('.slider');
-const screen = document.querySelector('.screen');
-
-
-tl.from('.unique__icons__img', {
-  y: 800,
-  duration: 4,
-  delay: .5,
-  ease: 'back'
-})
-
-tl.to('.unique__icons__img', {
-  y: 30,
-  duration: 5,
-  ease: 'back',
-  yoyo: true,
-  repeat: -1
-})
- 
-const mainScreenAnim = tl.to(phoneSliderImg, {
-  duration: 3,
-  ease: 'linear',
+const bigSurTitleAnim = gsap.to(bigSurTitle, {
+  y: 50,
   opacity: 1,
-},"2")
+  delay: .4,
+  ease: 'back',
+  duration: 1,
+  paused: true
+})
 
-const sliderAnim = gsap.to(phoneSliderImg, {
-  x: -440,
- duration:1,
- ease: "power(2).in",
- paused: true
-   });
+const bigSurBlockAnim = gsap.to(bigSurBlock, {
+  duration: 1, 
+  delay: .8,
+  opacity: 1,
+  paused: true
+})
 
-screen.addEventListener('mouseenter', () => {
-  sliderAnim.play()
+ScrollTrigger.create({
+  trigger: ".big__sur__ready",
+  markers: true,
+  start: 'top 60%',
+  end: 'bottom 80%', 
+  onEnter: () => {
+    bigSurTitleAnim.play();
+    bigSurBlockAnim.play()
+  },
+  onLeaveBack: ()=> {
+    bigSurTitleAnim.reverse();
+    bigSurBlockAnim.reverse();
+  },
 });
-
-screen.addEventListener('mouseleave', () => {
-  sliderAnim.reverse()
-});
-
-
-
-screen.addEventListener("mouseenter", function () {
-  sliderAnim.play();
-});
-
-
-
-
-
-
-// ScrollTrigger.create({
-//   trigger: ".unique__icons__img",
-//   start: "top 20%",
-//   end: "+-" + amountToScroll,
-//   pin: true,
-//   animation: slider,
-//   scrub: 1,
-// })
