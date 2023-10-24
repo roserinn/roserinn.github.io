@@ -2,7 +2,6 @@
 
 const burgerIcon = document.querySelector('.burger-icon');
 const sideMenu = document.querySelector('.side-menu');
-console.log(burgerIcon)
 
 burgerIcon.addEventListener('click', () => {
   sideMenu.classList.toggle('open');
